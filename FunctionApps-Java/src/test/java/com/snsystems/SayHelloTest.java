@@ -22,7 +22,8 @@ public class SayHelloTest {
      * Unit test for HttpTriggerJava method.
      */
     @Test
-    public void testHttpTriggerJava() throws Exception {
+    public void should_test_SayHello() throws Exception {
+    	
         // Setup
         @SuppressWarnings("unchecked")
         final HttpRequestMessage<Optional<String>> req = mock(HttpRequestMessage.class);

@@ -9,11 +9,12 @@ import com.microsoft.azure.functions.*;
  * @author Sathya
  */
 public class SayHello {
+	
     /**
-     * This function listens at endpoint "/api/HttpTriggerJava-SayHello". 
+     * This function listens at endpoint "/api/sayHello". 
      * Two ways to invoke it using "curl" command in bash:
-     * 1. curl -d "HTTP Body" {your host}/api/HttpTriggerJava-SayHello
-     * 2. curl {your host}/api/HttpTriggerJava-SayHello?name=HTTP%20Query
+     * 1. curl -d "HTTP Body" {your host}/api/sayHello
+     * 2. curl {your host}/api/sayHello?name=HTTP%20Query
      */
     @FunctionName("sayHello")
     public HttpResponseMessage run(
