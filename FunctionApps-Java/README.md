@@ -82,5 +82,5 @@ References :
   https://docs.microsoft.com/en-us/azure/storage/files/storage-java-how-to-use-file-storage?tabs=java
 
 
-SELECT * FROM email_alert;
-  update email_alert set is_email_sent = 0
+   SELECT * FROM email_alert;
+   update email_alert set is_email_sent = 0;

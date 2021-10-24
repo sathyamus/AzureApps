@@ -14,7 +14,10 @@ import com.azure.storage.blob.BlobServiceClientBuilder;
 import com.azure.storage.blob.specialized.BlockBlobClient;
 import com.azure.storage.common.StorageSharedKeyCredential;
 
-
+/**
+ * StorageHelper, contains helper methods for managing Azure Storage account
+ * @author Sathya
+ */
 public class StorageHelper {
 	
 	static String getAccountName(String storageAccNameEnv) {
@@ -34,14 +37,18 @@ public class StorageHelper {
      * @throws IOException If an I/O error occurs
      * @throws RuntimeException If the downloaded data doesn't match the uploaded data
      */
-    public static BlobServiceClient accessBlobServiceClient(String accountName, String accountKey) {
+    public static BlobServiceClient accessBlobServiceClient(String accNameEnv, String accKeyEnv) {
 
         System.out.println("accessBlobServiceClient");
+        
         /*
          * From the Azure portal, get your Storage account's name and account key.
          */
-        // String accountName = getAccountName(accNameEnv);
-        // String accountKey = getAccountKey(accKeyEnv);
+        String accountName = getAccountName(accNameEnv);
+        String accountKey = getAccountKey(accKeyEnv);
+
+        System.out.println(accountName);
+        System.out.println(accountKey);
 
         /*
          * Use your Storage account's name and key to create a credential object; this is used to access your account.
@@ -85,7 +92,7 @@ public class StorageHelper {
     }
 
     public static BlobContainerClient getBlobContainer(BlobServiceClient storageClient, String containerName) {
-    	
+
         System.out.println("getBlobContainer");
         /*
          * Create a client that references a to-be-created container in your Azure Storage account. This returns a
@@ -94,12 +101,16 @@ public class StorageHelper {
          */
         BlobContainerClient blobContainerClient = storageClient.getBlobContainerClient(containerName);
 
+        if (!blobContainerClient.exists()) {
+            System.out.println("creating : " + containerName);
+            blobContainerClient.create();
+        }
 
         return blobContainerClient;
     	
     }
     
-    public static BlockBlobClient uploadBlob(BlobContainerClient blobContainerClient, String blobName, String data) throws IOException{
+    public static BlockBlobClient uploadBlob(BlobContainerClient blobContainerClient, String blobName, String data) {
     	
         System.out.println("uploadBlob");
         /*
@@ -109,22 +120,24 @@ public class StorageHelper {
          */
         BlockBlobClient blockBlobClient = blobContainerClient.getBlobClient(blobName).getBlockBlobClient();
 
-        InputStream dataStream = new ByteArrayInputStream(data.getBytes(StandardCharsets.UTF_8));
 
 //      BlobClient blobClient = blobContainerClient.getBlobClient(fileName);
 //      InputStream is = new ByteArrayInputStream(textNew.getBytes());
 //      blobClient.upload(is, textNew.length());        
 
-        
-        if (!blockBlobClient.exists()) {
-            /*
-             * Create the blob with string (plain text) content.
-             */
-            blockBlobClient.upload(dataStream, data.length());
-
-            dataStream.close();
+        try {
+            if (!blockBlobClient.exists()) {
+                InputStream dataStream = new ByteArrayInputStream(data.getBytes(StandardCharsets.UTF_8));
+                /*
+                 * Create the blob with string (plain text) content.
+                 */
+                blockBlobClient.upload(dataStream, data.length());
+                dataStream.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        
+
         return blockBlobClient;
         
     }
