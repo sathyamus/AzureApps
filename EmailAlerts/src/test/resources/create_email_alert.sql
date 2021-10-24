@@ -1,0 +1,1 @@
+insert into EMAIL_ALERT(ID, TO_ADDRESS, MAIL_SUBJECT, MAIL_BODY, IS_EMAIL_SENT) values(100, 'Jeff.Mayer@gmail.com', 'Jeff', 'Mayer', 1);
