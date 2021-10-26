@@ -39,3 +39,15 @@ Hello World!
 References :
 	https://stackoverflow.com/questions/9689793/cant-execute-jar-file-no-main-manifest-attribute
 
+
+----------------------------------------------------------
+
+Docker image
+
+Step 1: $ docker build --tag hellojavaworld .
+Step 2: $ docker run hellojavaworld
+Step 3: $ docker images
+Step 4: $ docker ps
+Step 5: $ docker ps -a
+Step 6: $ docker rmi -f 02b13c765dbc
+
