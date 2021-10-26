@@ -74,3 +74,12 @@ sathya-emailalert-service
 
 https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-java
 https://docs.microsoft.com/en-us/azure/azure-functions/functions-scenario-database-table-cleanup
+
+
+
+-------------------------------
+### Docker building image, run container steps
+
+docker build --tag sathyamus/email-alerts-api .
+docker run -p8080:8080 sathyamus/email-alerts-api
+
