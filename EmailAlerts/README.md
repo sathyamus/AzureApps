@@ -83,3 +83,20 @@ https://docs.microsoft.com/en-us/azure/azure-functions/functions-scenario-databa
 docker build --tag sathyamus/email-alerts-api .
 docker run -p8080:8080 sathyamus/email-alerts-api
 
+
+### Tagging images, and pushing them to local / remote Registry
+
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
+
+### Removing / untagging from local / remote Registry
+docker rmi -f e26263695ec1
+docker rmi sathyamus/email-alerts-api
+
+docker tag sathyamus/email-alerts-api sathyaimageshub.azurecr.io/email-alerts-api:1.0.0
+
+### Logging into azure and Container Registry
+az login --tenant d8071284-1122-471c-1122-2df44d5b2d1f
+az acr login --name sathyaimageshub
+
+docker push sathyaimageshub.azurecr.io/email-alerts-api:2.0.0
