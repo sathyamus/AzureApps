@@ -7,6 +7,8 @@ ARG VERSION=0.0.1-SNAPSHOT
 
 WORKDIR ${APP_HOME}
 
+EXPOSE 8080
+
 COPY pom.xml ./
 COPY start.sh ./
 
