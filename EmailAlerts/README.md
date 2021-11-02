@@ -100,3 +100,11 @@ az login --tenant d8071284-1122-471c-1122-2df44d5b2d1f
 az acr login --name sathyaimageshub
 
 docker push sathyaimageshub.azurecr.io/email-alerts-api:2.0.0
+
+
+-------------------------------
+
+az login --tenant d8071284-1234
+kubectl get all
+kubectl apply -f deployment-new.yaml
+kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
