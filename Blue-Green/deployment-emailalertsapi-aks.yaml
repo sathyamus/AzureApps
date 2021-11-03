@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emailalertsapi-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: emailalertsapi
+  template:
+    metadata:
+      labels:
+        app: emailalertsapi
+    spec:
+      containers:
+      - name: emailalertsapi-container
+        image: sathyaimageshub.azurecr.io/email-alerts-api:7.0.0
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: emailalertsapi
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+  selector:
+    app: emailalertsapi
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: emailalertsapi
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: emailalertsapi
+          servicePort: 8080
