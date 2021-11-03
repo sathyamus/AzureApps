@@ -105,6 +105,74 @@ docker push sathyaimageshub.azurecr.io/email-alerts-api:2.0.0
 -------------------------------
 
 az login --tenant d8071284-1234
+kubectl get pods --output=wide
 kubectl get all
 kubectl apply -f deployment-new.yaml
+
+
+https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
+
+In Windows, Edit -> C:\Windows\System32\drivers\etc\hosts
+
 kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
+
+bash-5.1# curl http://10.1.0.102:80/
+    <html><body><h1>It works!</h1></body></html>
+
+bash-5.1# curl http://10.1.0.104:80/
+    <html><body><h1>It works!</h1></body></html>
+
+bash-5.1# curl http://10.1.0.99:80/
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Welcome to nginx!</title>
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+        }
+    </style>
+    </head>
+    <body>
+    <h1>Welcome to nginx!</h1>
+    <p>If you see this page, the nginx web server is successfully installed and
+    working. Further configuration is required.</p>
+
+    <p>For online documentation and support please refer to
+    <a href="http://nginx.org/">nginx.org</a>.<br/>
+    Commercial support is available at
+    <a href="http://nginx.com/">nginx.com</a>.</p>
+
+    <p><em>Thank you for using nginx.</em></p>
+    </body>
+    </html>
+
+
+bash-5.1# curl http://10.1.0.107:80/
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Welcome to nginx!</title>
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+        }
+    </style>
+    </head>
+    <body>
+    <h1>Welcome to nginx!</h1>
+    <p>If you see this page, the nginx web server is successfully installed and
+    working. Further configuration is required.</p>
+
+    <p>For online documentation and support please refer to
+    <a href="http://nginx.org/">nginx.org</a>.<br/>
+    Commercial support is available at
+    <a href="http://nginx.com/">nginx.com</a>.</p>
+
+    <p><em>Thank you for using nginx.</em></p>
+    </body>
+    </html>
