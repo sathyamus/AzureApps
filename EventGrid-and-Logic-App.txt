@@ -1,0 +1,8 @@
+
+
+Assignment5: EventGrid and Logic App - 
+Send email when VM is resized - 
+Deadline: 26th Oct
+
+https://docs.microsoft.com/en-us/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app
+
