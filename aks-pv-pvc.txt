@@ -1,0 +1,71 @@
+https://docs.microsoft.com/en-us/sql/linux/tutorial-sql-server-containers-kubernetes?view=sql-server-ver15
+
+https://blog.dbi-services.com/running-sql-server-containers-on-k8s-docker-for-windows-ce-stable-channel/
+
+https://github.com/microsoft/mssql-docker/issues/615
+
+-----------
+
+
+
+
+kind: Event
+apiVersion: v1
+metadata:
+  name: sqlserver-deployment-5fd565d499-kc4pr.16b53a95baf7703a
+  namespace: default
+  uid: 487ff585-2026-436a-b8f9-eb4a0c99d728
+  resourceVersion: '215264'
+  creationTimestamp: '2021-11-07T09:47:34Z'
+  managedFields:
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2021-11-07T09:47:34Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:count: {}
+        f:firstTimestamp: {}
+        f:involvedObject:
+          f:apiVersion: {}
+          f:kind: {}
+          f:name: {}
+          f:namespace: {}
+          f:resourceVersion: {}
+          f:uid: {}
+        f:lastTimestamp: {}
+        f:message: {}
+        f:reason: {}
+        f:source:
+          f:component: {}
+        f:type: {}
+involvedObject:
+  kind: Pod
+  namespace: default
+  name: sqlserver-deployment-5fd565d499-kc4pr
+  uid: ac2ea3ea-2c24-42fc-b04f-7831d35d4aad
+  apiVersion: v1
+  resourceVersion: '215212'
+reason: FailedAttachVolume
+message: >-
+  AttachVolume.Attach failed for volume "sqlserver-azdisk-pv3" : Retriable:
+  false, RetryAfter: 0s, HTTPStatusCode: 403, RawError: Retriable: false,
+  RetryAfter: 0s, HTTPStatusCode: 403, RawError:
+  {"error":{"code":"AuthorizationFailed","message":"The client
+  '309f8137-900d-4319-9b4a-1e3a007eb866' with object id
+  '309f8137-900d-4319-9b4a-1e3a007eb866' does not have authorization to perform
+  action 'Microsoft.Compute/disks/read' over scope
+  '/subscriptions/ab89f89a-7be9-4db0-a082-32a04c828a9c/resourceGroups/sathya-sql-db/providers/Microsoft.Compute/disks/ms-sql-db-storage-disk'
+  or the scope is invalid. If access was recently granted, please refresh your
+  credentials."}}
+source:
+  component: attachdetach-controller
+firstTimestamp: '2021-11-07T09:47:34Z'
+lastTimestamp: '2021-11-07T09:48:06Z'
+count: 7
+type: Warning
+eventTime: null
+reportingComponent: ''
+reportingInstance: ''
+
+
