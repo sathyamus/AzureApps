@@ -1,0 +1,41 @@
+$kubectl describe deployment sqlserver-deployment
+
+Name:                   sqlserver-deployment
+Namespace:              default
+CreationTimestamp:      Sat, 06 Nov 2021 21:50:27 +0530
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=sqlserver-pod
+Replicas:               1 desired | 1 updated | 1 total | 0 available | 1 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=sqlserver-pod
+  Containers:
+   sqlserver-container:
+    Image:      mcr.microsoft.com/mssql/server:2019-latest
+    Port:       <none>
+    Host Port:  <none>
+    Environment Variables from:
+      sqlserver-config-map  ConfigMap  Optional: false
+      sqlserver-pwd-secret  Secret     Optional: false
+    Environment:            <none>
+    Mounts:
+      /var/opt/mssql from mssqldb (rw)
+  Volumes:
+   mssqldb:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  sqlserver-azdisk-pvc
+    ReadOnly:   false
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      False   MinimumReplicasUnavailable
+  Progressing    True    ReplicaSetUpdated
+OldReplicaSets:  <none>
+NewReplicaSet:   sqlserver-deployment-58ddd96c57 (1/1 replicas created)
+Events:
+  Type    Reason             Age    From                   Message
+  ----    ------             ----   ----                   -------
+  Normal  ScalingReplicaSet  5m19s  deployment-controller  Scaled up replica set sqlserver-deployment-58ddd96c57 to 1
