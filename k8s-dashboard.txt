@@ -1,0 +1,39 @@
+
+Kubernetes Dashboard
+
+The Dashboard UI is not deployed by default. To deploy it, run the following command:
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.4.0/aio/deploy/recommended.yaml
+
+kubectl proxy
+http://127.0.0.1:8001/api/v1
+http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
+http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/pod?namespace=default
+
+
+https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/
+https://docs.giantswarm.io/app-platform/apps/kubernetes-dashboard/
+Heapster -- https://docs.giantswarm.io/getting-started/metrics/
+
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+https://gist.github.com/drobnikj/5dbe302989bed8b21607ec46fa8cce29
+https://developers.redhat.com/blog/2020/11/10/you-probably-need-liveness-and-readiness-probes#example_2__a_jobs_server__no_rest_api_
+
+C:\Users\SN\Desktop\Ivy\7-Assignment-AKS-E-comm\ECom-Kubernetes-YAML-Files\local-3>kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.4.0/aio/deploy/recommended.yaml
+namespace/kubernetes-dashboard created
+serviceaccount/kubernetes-dashboard created
+service/kubernetes-dashboard created
+secret/kubernetes-dashboard-certs created
+secret/kubernetes-dashboard-csrf created
+secret/kubernetes-dashboard-key-holder created
+configmap/kubernetes-dashboard-settings created
+role.rbac.authorization.k8s.io/kubernetes-dashboard created
+clusterrole.rbac.authorization.k8s.io/kubernetes-dashboard created
+rolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
+clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
+deployment.apps/kubernetes-dashboard created
+service/dashboard-metrics-scraper created
+deployment.apps/dashboard-metrics-scraper created
+
