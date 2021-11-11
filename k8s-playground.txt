@@ -1,0 +1,9 @@
+
+
+
+
+https://www.katacoda.com/courses/kubernetes/playground
+http://labs.play-with-k8s.com/
+https://training.play-with-kubernetes.com/kubernetes-workshop/
+
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
