@@ -1,0 +1,58 @@
+
+Re-create .... DevOps Starter ... 
+
+https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml
+Use predefined variables
+
+https://sathya-emailalert-service.azurewebsites.net/swagger-ui.html
+-- KO -- fix it 
+
+https://dev.azure.com/sathyamusaz/740fc1fe-b47a-4637-9df8-42dcbd525d9f/_apis/build/builds/3/logs/6
+
+
+package is at /home/vsts/work/1/s/target/emailAlerts-0.0.1-SNAPSHOT.jar
+build is expecting at  /home/vsts/work/1/a/**/*.jar
+
+-------
+
+trigger:
+- none
+
+pool:
+  vmImage: windows-latest
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '6.0.x'
+    
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '-c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure - SS1'
+    appType: 'webApp'
+    WebAppName: 'dssdemoapp'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+
