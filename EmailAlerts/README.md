@@ -83,54 +83,57 @@ https://docs.microsoft.com/en-us/azure/azure-functions/functions-scenario-databa
 -------------------------------
 ### Docker building image, run container steps
 
-docker build --tag sathyamus/email-alerts-api .
-docker run -p8080:8080 sathyamus/email-alerts-api
+   docker build --tag sathyamus/email-alerts-api .
+   docker run -p8080:8080 sathyamus/email-alerts-api
 
 
 ### Tagging images, and pushing them to local / remote Registry
 
-docker tag local-image:tagname new-repo:tagname
-docker push new-repo:tagname
+   docker tag local-image:tagname new-repo:tagname
+   docker push new-repo:tagname
 
 ### Removing / untagging from local / remote Registry
-docker rmi -f e26263695ec1
-docker rmi sathyamus/email-alerts-api
 
-docker tag sathyamus/email-alerts-api sathyaimageshub.azurecr.io/email-alerts-api:1.0.0
+   docker rmi -f e26263695ec1
+   docker rmi sathyamus/email-alerts-api
+
+   docker tag sathyamus/email-alerts-api sathyaimageshub.azurecr.io/email-alerts-api:1.0.0
 
 ### Logging into azure and Container Registry
-az login --tenant d8071284-1122-471c-1122-2df44d5b2d1f
-az acr login --name sathyaimageshub
+   
+   az login --tenant d8071284-1122-471c-1122-2df44d5b2d1f
+   az acr login --name sathyaimageshub
 
-docker push sathyaimageshub.azurecr.io/email-alerts-api:2.0.0
+   docker push sathyaimageshub.azurecr.io/email-alerts-api:2.0.0
 
 
 -------------------------------
 ### Deploy Image using K8s
 
-az login --tenant d8071284-1234
-kubectl get pods --output=wide
-kubectl get all
-kubectl apply -f deployment-new.yaml
+   az login --tenant d8071284-1234
+   kubectl get pods --output=wide
+   kubectl get all
+   kubectl apply -f deployment-new.yaml
 
 
-https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
+   https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
 
-In Windows, Edit -> C:\Windows\System32\drivers\etc\hosts
+   In Windows, Edit -> C:\Windows\System32\drivers\etc\hosts
 
-kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
+   kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
 
-bash-5.1# curl http://10.1.0.102:80/
+   bash-5.1# curl http://10.1.0.102:80/
+
 ``` js
     <html><body><h1>It works!</h1></body></html>
 ```
 
-bash-5.1# curl http://10.1.0.104:80/
+   bash-5.1# curl http://10.1.0.104:80/
 ``` js
     <html><body><h1>It works!</h1></body></html>
 ```
 
-bash-5.1# curl http://10.1.0.99:80/
+   bash-5.1# curl http://10.1.0.99:80/
 ``` js
     <!DOCTYPE html>
     <html>
@@ -159,7 +162,7 @@ bash-5.1# curl http://10.1.0.99:80/
     </html>
 ```
 
-bash-5.1# curl http://10.1.0.107:80/
+   bash-5.1# curl http://10.1.0.107:80/
 ``` js
     <!DOCTYPE html>
     <html>
