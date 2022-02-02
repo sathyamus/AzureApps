@@ -110,10 +110,10 @@ https://docs.microsoft.com/en-us/azure/azure-functions/functions-scenario-databa
 -------------------------------
 ### Deploy Image using K8s
 
-   az login --tenant d8071284-1234
-   kubectl get pods --output=wide
-   kubectl get all
-   kubectl apply -f deployment-new.yaml
+   - az login --tenant d8071284-1234
+   - kubectl get all
+   - kubectl get pods --output=wide
+   - kubectl apply -f deployment-new.yaml
 
 
    https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
